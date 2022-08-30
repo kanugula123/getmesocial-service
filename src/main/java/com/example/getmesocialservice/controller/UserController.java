@@ -9,6 +9,10 @@ public class UserController {
 
     @GetMapping("/api/user")
     public String getUser() {
+<<<<<<< HEAD
+=======
+        System.out.println("User");
+>>>>>>> origin/master
         return "User Information";
     }
 }
