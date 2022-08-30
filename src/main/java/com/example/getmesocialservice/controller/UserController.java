@@ -12,6 +12,10 @@ public class UserController {
 <<<<<<< HEAD
 =======
         System.out.println("User");
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+        System.out.println("Hello");
 >>>>>>> origin/master
         return "User Information";
     }
