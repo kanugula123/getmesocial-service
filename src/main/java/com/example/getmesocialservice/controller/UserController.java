@@ -10,6 +10,7 @@ public class UserController {
     @GetMapping("/api/user")
     public String getUser() {
         System.out.println("User");
+        System.out.println("Hello");
         return "User Information";
     }
 }
