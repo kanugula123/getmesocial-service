@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping("/api/user")
-    public String getUser() {
-        System.out.println("User");
-        System.out.println("Hello");
-        return "User Information";
+    public User getUser() {
+        User user = new User("Karthik","Toronto",29,"www.google.com");
+        return user;
     }
 }
