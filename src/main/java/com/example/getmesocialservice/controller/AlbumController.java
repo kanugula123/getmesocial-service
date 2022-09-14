@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-//@RequestMapping("/api1")
+@RequestMapping("/api1")
 public class AlbumController {
 
     @Autowired
