@@ -7,19 +7,16 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 /*@EntityScan
-@Document(collection = "Album")*/
-public class Album {
+@Document(collection = "users")*/
+public class Users {
 
     @Id
     private String id;
     private String name;
-    private String coverPhotoUrl;
-    private String createdBy;
-    private Date dateCreated;
+    private String email;
+    private String profilePhotoUrl;
 }

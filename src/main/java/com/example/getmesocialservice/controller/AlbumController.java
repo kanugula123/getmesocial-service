@@ -15,29 +15,30 @@ public class AlbumController {
     @Autowired
     AlbumService albumService;
 
-    @GetMapping("/album")
-    public Album getAlbum() {
-        return albumService.getAlbum();
+    @GetMapping("/album/{albumId}")
+    public Optional<Album> getAlbum(@PathVariable(value="albumId") String albumId) {
+        return albumService.getAlbum(albumId);
     }
 
 //    @RequestMapping(value = "/album/{albumId}", method = RequestMethod.GET)
-    @GetMapping("/album/{albumId}")
-    public Optional<Album> getAlbumById(@PathVariable(value = "albumId") int albumId) {
-        return albumService.getAlbumById(albumId);
+    @GetMapping("/album")
+    public List<Album> getAllAlbums() {
+        return albumService.getAlbums();
     }
 
     @PostMapping("/save-album")
-    public List<Album> saveAlbum(@RequestBody Album album) {
+    public Album saveAlbum(@RequestBody Album album) {
         return albumService.saveAlbum(album);
     }
 
     @PutMapping("/album/{albumId}")
-    public Album updateAlbum(@PathVariable(value = "albumId") int albumId, @RequestBody Album album) {
-        return albumService.updateAlbum(albumId, album);
+    public Album updateAlbum(@RequestBody Album album) {
+        return albumService.updateAlbum(album);
     }
 
     @DeleteMapping("/album")
-    public Album deleteAlbum(@RequestParam(name="albumId") int albumId) {
-        return albumService.deleteAlbum(albumId);
+    public String deleteAlbum(@RequestParam(name="albumId") String albumId) {
+        albumService.deleteAlbum(albumId);
+        return "Album with " + albumId + " is deleted";
     }
 }

@@ -1,7 +1,7 @@
 package com.example.getmesocialservice.service;
 
 import com.example.getmesocialservice.model.Album;
-import com.example.getmesocialservice.repository.AlbumRepo;
+import com.example.getmesocialservice.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,28 +12,24 @@ import java.util.Optional;
 public class AlbumService {
 
     @Autowired
-    AlbumRepo albumRepo;
+    AlbumRepository albumRepo;
 
-    public Album getAlbum() {
-        return albumRepo.getAlbum();
+    public Optional<Album> getAlbum(String userId) {
+        return albumRepo.findById(userId);
     }
-   /* public Album getAlbumById(int albumId) {
-        return Album;
-    }*/
-
-    public List<Album> saveAlbum(Album album) {
-        return albumRepo.saveAlbum(album);
+    public List<Album> getAlbums() {
+        return albumRepo.findAll();
     }
 
-    public Optional<Album> getAlbumById(int albumId) {
-        return albumRepo.getAlbumbyId(albumId);
+    public Album saveAlbum(Album album) {
+        return albumRepo.save(album);
     }
 
-    public Album updateAlbum(int albumId, Album album) {
-        return albumRepo.updateAlbum(albumId,album);
+    public Album updateAlbum(Album album) {
+        return albumRepo.save(album);
     }
 
-    public Album deleteAlbum(int albumId) {
-        return albumRepo.deleteAlbum(albumId);
+    public void deleteAlbum(String albumId) {
+        albumRepo.deleteById(albumId);
     }
 }
