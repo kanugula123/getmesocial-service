@@ -10,8 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-/*@EntityScan
-@Document(collection = "users")*/
+@EntityScan
+@Document(collection = "users")
 public class Users {
 
     @Id

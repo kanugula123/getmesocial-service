@@ -12,8 +12,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-/*@EntityScan
-@Document(collection = "Album")*/
+@EntityScan
+@Document(collection = "Album")
 public class Album {
 
     @Id
