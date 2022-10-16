@@ -1,8 +1,11 @@
 package com.example.getmesocialservice.service;
 
+import com.example.getmesocialservice.exceptions.UserNotFoundException;
 import com.example.getmesocialservice.model.Users;
 import com.example.getmesocialservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +17,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Users saveUser(Users user) {
-        return userRepository.save(user);
+    public Users saveUser(Users user){
+            return userRepository.save(user);
     }
 
     public Optional<Users> getUserById(String userId) {

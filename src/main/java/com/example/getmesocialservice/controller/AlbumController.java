@@ -3,13 +3,18 @@ package com.example.getmesocialservice.controller;
 import com.example.getmesocialservice.model.Album;
 import com.example.getmesocialservice.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api1")
+@Validated
 public class AlbumController {
 
     @Autowired
@@ -27,13 +32,18 @@ public class AlbumController {
     }
 
     @PostMapping("/save-album")
-    public Album saveAlbum(@RequestBody Album album) {
+    public Album saveAlbum(@RequestBody @Valid Album album) {
         return albumService.saveAlbum(album);
     }
 
-    @PutMapping("/album/{albumId}")
-    public Album updateAlbum(@RequestBody Album album) {
-        return albumService.updateAlbum(album);
+    @PutMapping("/album")
+    public ResponseEntity<Album> updateAlbum(@RequestBody @Valid Album album) {
+        if(album != null) {
+            Album album1 = albumService.updateAlbum(album);
+            return new ResponseEntity(album1, HttpStatus.OK);
+        } else {
+            return new ResponseEntity(Valid.class, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/album")

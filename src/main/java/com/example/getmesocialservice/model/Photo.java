@@ -1,5 +1,6 @@
 package com.example.getmesocialservice.model;
 
+import com.example.getmesocialservice.validators.ValidName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Photo {
     private String id;
     private String albumId;
     private String photoUrl;
+    @ValidName
     private String createdBy;
     private Date dateCreated;
 }

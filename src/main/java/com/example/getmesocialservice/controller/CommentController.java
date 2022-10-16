@@ -3,13 +3,16 @@ package com.example.getmesocialservice.controller;
 import com.example.getmesocialservice.model.Comment;
 import com.example.getmesocialservice.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api3")
+@Validated
 public class CommentController {
 
     @Autowired
@@ -24,8 +27,9 @@ public class CommentController {
     public List<Comment> getAllComments() {
         return commentService.getAllComments();
     }
+
     @PostMapping("/comment/save-comment")
-    public Comment saveComment(@RequestBody Comment comment) {
+    public Comment saveComment(@RequestBody @Valid Comment comment) {
         return commentService.saveComment(comment);
     }
 
@@ -36,7 +40,7 @@ public class CommentController {
     }
 
     @PutMapping("/comment/update-comment")
-    public Comment updateComment(@RequestBody Comment comment) {
+    public Comment updateComment(@RequestBody @Valid Comment comment) {
         return commentService.updateComment(comment);
     }
 
